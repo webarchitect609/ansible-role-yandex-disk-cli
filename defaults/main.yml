@@ -1,0 +1,4 @@
+---
+yadisk_cli_package: yandex-disk
+yadisk_cli_deb_source: "deb [arch=amd64] https://repo.yandex.ru/yandex-disk/deb/ stable main"
+yadisk_cli_gpg_key_url: "https://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG"

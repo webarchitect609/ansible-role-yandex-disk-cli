@@ -1,0 +1,27 @@
+---
+- name: "Ensure GPG tools are installed."
+  apt:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - "gpgv"
+      - "gnupg"
+
+- include_tasks: setup-repo-Debian.yml
+  when:
+    - ansible_os_family == 'Debian'
+    - ansible_distribution != 'Ubuntu'
+
+- include_tasks: setup-repo-Ubuntu.yml
+  when:
+    - ansible_distribution == 'Ubuntu'
+
+- name: "Refresh apt sources list"
+  apt:
+    update_cache: true
+
+- name: "Install Yandex Disk"
+  apt:
+    name: "{{ yadisk_cli_package }}"
+    state: present

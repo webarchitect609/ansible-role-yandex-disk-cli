@@ -1,0 +1,15 @@
+---
+- name: "Ensure HTTPS apt transport installed."
+  apt:
+    name: "apt-transport-https"
+    state: present
+
+- name: "Add repository."
+  template:
+    src: templates/yandex-disk.list.j2
+    dest: /etc/apt/sources.list.d/yandex-disk.list
+    mode: 0644
+
+- name: "Add repo key."
+  apt_key:
+    url: "{{ yadisk_cli_gpg_key_url }}"
