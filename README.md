@@ -7,7 +7,7 @@ Ansible Role: Yandex Disk cli
 [![License](https://img.shields.io/github/license/webarchitect609/ansible-role-yandex-disk-cli)](LICENSE.md)
 [![More stuff from me](https://img.shields.io/badge/galaxy-webarchitect609-000)](https://galaxy.ansible.com/webarchitect609)
 
-Installs Yandex Disk cli from the official deb repository.
+Installs [Yandex Disk cli](https://yandex.ru/support/disk-desktop-linux/#cli-gui) from the official deb repository.
 
 Requirements
 ------------
@@ -24,7 +24,7 @@ However, all available variables are listed below, along with default values (se
 
 Package name to install
 
-    yadisk_cli_deb_source: "deb [arch=amd64] https://repo.yandex.ru/yandex-disk/deb/ stable main"
+    yadisk_cli_deb_source: "deb http://repo.yandex.ru/yandex-disk/deb/ stable main"
 
 Repository url.
 
