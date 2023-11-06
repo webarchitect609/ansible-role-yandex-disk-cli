@@ -4,17 +4,19 @@ galaxy_info:
   namespace: webarchitect609
   role_name: yandex_disk_cli
   author: Gripinskiy Sergey
-  description: Installs Yandex Disk cli from the official deb repository.
-  company:
+  description: Installs Yandex Disk cli from the official repository.
+  company: ''
   license: BSD-3-Clause
-  min_ansible_version: 2.8
+  min_ansible_version: '2.15'
   platforms:
     - name: Ubuntu
       versions:
-        # 18.04 LTS
-        - bionic
+        # 22.04 LTS
+        - jammy
         # 20.04 LTS
         - focal
+        # 18.04 LTS
+        - bionic
     - name: Debian
       versions:
         # 9

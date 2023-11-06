@@ -1,27 +1,35 @@
 ---
-- name: "Ensure GPG tools are installed."
-  apt:
+- name: "Fix 'configured multiple times'"
+  ansible.builtin.file:
+    path: "/etc/apt/sources.list.d/repo_yandex_ru_yandex_disk_deb.list"
+    state: absent
+
+- name: "Refresh apt sources list"
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: "Ensure dependencies are installed"
+  ansible.builtin.apt:
     name: "{{ packages }}"
     state: present
   vars:
     packages:
       - "gpgv"
       - "gnupg"
+      - "apt-transport-https"
 
-- include_tasks: setup-repo-Debian.yml
-  when:
-    - ansible_os_family == 'Debian'
-    - ansible_distribution != 'Ubuntu'
+- name: "Add GPG key"
+  ansible.builtin.apt_key:
+    url: "{{ yadisk_cli_gpg_key_url }}"
 
-- include_tasks: setup-repo-Ubuntu.yml
-  when:
-    - ansible_distribution == 'Ubuntu'
-
-- name: "Refresh apt sources list"
-  apt:
-    update_cache: true
+- name: "Add repository"
+  ansible.builtin.apt_repository:
+    repo: "{{ yadisk_cli_deb_source }}"
+    filename: "yandex-disk"
+    state: present
 
 - name: "Install Yandex Disk"
-  apt:
+  ansible.builtin.apt:
     name: "{{ yadisk_cli_package }}"
     state: present
