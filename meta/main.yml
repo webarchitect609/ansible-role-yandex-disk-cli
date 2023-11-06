@@ -17,12 +17,6 @@ galaxy_info:
         - focal
         # 18.04 LTS
         - bionic
-    - name: Debian
-      versions:
-        # 9
-        - stretch
-        # 10
-        - buster
 
   galaxy_tags:
     - yandex
